@@ -1,5 +1,13 @@
+import ThreeTorus from "@components/ThreeTorus";
+
 function App() {
-  return <div>환경세팅</div>;
+  return (
+    <>
+      <div style={{ width: "100%", height: "100vh", overflow: "hidden" }}>
+        <ThreeTorus />
+      </div>
+    </>
+  );
 }
 
 export default App;
