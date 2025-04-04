@@ -42,7 +42,7 @@ const ThreeGLTFModel = () => {
     // ];
     // const envMap = cubeLoader.load(urls);
 
-    // ✅ GLTF 모델 불러오기
+    // GLTF 모델 불러오기
     const loader = new GLTFLoader();
     loader.load(
       "/models/marble_bust_01_4k/marble_bust_01_4k.gltf",
