@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: build
           path: build/
@@ -56,7 +56,7 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Sync S3 Bucket
-        run: aws s3 sync build/ s3://your-bucket-name --delete
+        run: aws s3 sync build/ s3://huiseon-portfolio --delete
 
       - name: Invalidate CloudFront Cache
         run: aws cloudfront create-invalidation --distribution-id E35IU047VVLE85 --paths "/*"
