@@ -27,17 +27,16 @@ jobs:
         run: npm run lint
 
       - name: Run Tests
-        run: npm test -- --coverage
+        run: npx vitest run --coverage
 
       - name: Build Project
         run: npm run build
 
-      # 캐시 초기화를 위한 더미 주석
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build
-          path: build/
+          name: dist
+          path: dist/
 
   deploy:
     needs: build-test
@@ -48,8 +47,8 @@ jobs:
       - name: Download Build Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: build
-          path: build/
+          name: dist
+          path: dist/
 
       - name: Deploy to AWS S3
         uses: aws-actions/configure-aws-credentials@v2
@@ -59,7 +58,7 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Sync S3 Bucket
-        run: aws s3 sync build/ s3://huiseon-portfolio --delete
+        run: aws s3 sync dist/ s3://huiseon-portfolio --delete
 
       - name: Invalidate CloudFront Cache
         run: aws cloudfront create-invalidation --distribution-id E35IU047VVLE85 --paths "/*"
