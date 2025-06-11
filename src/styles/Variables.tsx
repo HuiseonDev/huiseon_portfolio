@@ -1,32 +1,17 @@
 const variables = {
   colors: {
-    primary: "#FFB40F",
-    primary900: "#FE7108",
-    primary800: "#FE900C",
-    primary700: "#FFA10D",
-    primary600: "#FFB40F",
-    primary500: "#FFC215",
-    primary400: "#FFCB2E",
-    primary300: "#FFD652",
-    primary200: "#FFE084",
-    primary100: "#FFECB4",
-    primary50: "#FFF8E1",
-
-    black: "#1E1E1E",
+    black: "#1e1e1e",
     white: "#fff",
 
-    gray900: "#3F3F3F",
-    gray800: "#5D5D5D",
-    gray700: "#717171",
-    gray600: "#9A9A9A",
-    gray500: "#B9B9B9",
-    gray400: "#DDDDDD",
-    gray300: "#ECECEC",
-    gray200: "#F4F4F4",
+    gray900: "#3c3c3e",
+    gray800: "#595b5c",
+    gray700: "#6d6e70",
+    gray600: "#959799",
+    gray500: "#C9C9C9",
+    gray400: "#d4d8db",
+    gray300: "#e6e7ec",
+    gray200: "#ebedf2",
     gray100: "#F9F9F9",
-
-    red: "#F80100",
-    green: "#20B757",
   },
 
   size: {

@@ -5,13 +5,21 @@ import { breakPoints } from "./BreakPoint";
 import { TypoBodyMdR } from "./Common";
 
 const GlobalStyles = css`
-  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+  @font-face {
+    font-family: "Pretendard";
+    src: url("/fonts/PretendardVariable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
 
   :root {
     font-size: 10px; /* 1rem = 10px */
     min-width: 320px;
     min-height: 100svh;
-    background: ${variables.colors.white};
+    background-color: ${variables.colors.gray100};
 
     --breakPointPC: 500px;
 
@@ -33,9 +41,9 @@ const GlobalStyles = css`
 
   body {
     margin: unset;
+
     color: ${variables.colors.black};
-    font-family: "Playfair Display", "Didot", "Helvetica Neue", "Pretendard",
-      sans-serif;
+    font-family: "Pretendard", "Merriweather", "Montserrat", sans-serif;
     font-size: ${variables.size.medium};
     padding: 0 ${variables.layoutPadding} calc(4rem + ${variables.headerHeight});
 
@@ -227,74 +235,6 @@ const GlobalStyles = css`
     overflow-wrap: break-word;
     white-space: pre-wrap;
     padding: unset;
-  }
-
-  input[type="text"],
-  input[type="search"] {
-    height: 4rem;
-    width: 100%;
-    font-size: ${variables.size.medium};
-    text-indent: 0.7em;
-    border-radius: ${variables.borderRadius};
-    border: 1px solid ${variables.colors.gray400};
-    outline: 1px solid transparent;
-  }
-
-  input[type="text"]::placeholder,
-  input[type="email"]::placeholder,
-  input[type="password"]::placeholder,
-  input[type="tel"]::placeholder {
-    color: ${variables.colors.gray500};
-    font-family: unset;
-  }
-
-  input:focus,
-  input[type="email"]:focus,
-  input[type="password"]:focus,
-  input[type="tel"]:focus {
-  }
-
-  select:focus-visible {
-    border-color: ${variables.colors.primary};
-    outline: 1px solid ${variables.colors.primary};
-  }
-
-  input[type="checkbox"],
-  input[type="radio"] {
-    all: unset;
-    box-sizing: border-box;
-    display: inline-block;
-    min-width: 1.4rem;
-    cursor: pointer;
-    position: relative;
-    vertical-align: middle;
-    margin-top: -0.2em;
-    margin-right: 0.7em;
-    aspect-ratio: 1 / 1;
-  }
-
-  input[type="radio"] {
-    width: 1.3em;
-    border: 2px solid ${variables.colors.gray500};
-    border-radius: 50%;
-
-    &:checked {
-      border-width: 0.4em;
-      border-color: ${variables.colors.primary600};
-    }
-  }
-
-  input[type="checkbox"] {
-    width: 1.4em;
-    border: 2px solid ${variables.colors.gray600};
-    border-radius: 2px;
-
-    &:checked {
-      color: ${variables.colors.primary600};
-      border-color: currentColor;
-      background: currentColor url(/img/icon-check-white-radius.svg) no-repeat
-        center / 0.8em;
-    }
   }
 
   textarea {

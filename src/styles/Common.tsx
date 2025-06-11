@@ -130,7 +130,7 @@ export const TypoBodyMdM = css`
 `;
 
 export const TypoCapSmR = css`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.4rem;
 `;
