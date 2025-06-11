@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 const Layout = () => {
   return (
     <div>
-      <header>공통 헤더</header>
+      <Header />
       <Outlet />
-      <footer>공통 푸터</footer>
+      <Footer />
     </div>
   );
 };

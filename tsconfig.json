@@ -10,7 +10,7 @@
     "module": "ESNext",
     "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "allowJs": false,
     "strict": true,
@@ -18,7 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
