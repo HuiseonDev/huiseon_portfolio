@@ -38,7 +38,7 @@ const Footer = () => {
             <address>designh2sun@gmail.com</address>
           </div>
 
-          <div css={footerNavStyle}>
+          <nav css={footerNavStyle}>
             <ul>
               <li>
                 <a href="/">Home</a>
@@ -56,7 +56,7 @@ const Footer = () => {
                 <a href="/contact">Blog</a>
               </li>
             </ul>
-          </div>
+          </nav>
         </section>
 
         <div css={contentinfoStyle}>
@@ -76,7 +76,7 @@ const Montserrat = css`
   font-family: "Montserrat", sans-serif;
 `;
 
-const FooterStyle = styled.div`
+const FooterStyle = styled.footer`
   background-color: ${variables.colors.gray500};
   position: fixed;
   bottom: 0;
