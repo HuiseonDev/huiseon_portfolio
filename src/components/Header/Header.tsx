@@ -12,13 +12,13 @@ const Header = () => {
 
   return (
     <HeaderStyle>
-      <div className="header-inner">
+      <header className="header-inner">
         <div css={logoStyle}>
           <img src="/img/logo.svg" alt="포트폴리오 로고" />
           <p css={merriweatherStyle}>Portfolio</p>
         </div>
 
-        <div css={[navBarStyle, merriweatherStyle]}>
+        <nav css={[navBarStyle, merriweatherStyle]}>
           {navList.map((menu, idx) => (
             <button
               key={menu}
@@ -28,8 +28,8 @@ const Header = () => {
               {menu}
             </button>
           ))}
-        </div>
-      </div>
+        </nav>
+      </header>
     </HeaderStyle>
   );
 };
