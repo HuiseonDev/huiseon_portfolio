@@ -48,10 +48,11 @@ const HeaderStyle = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99;
   padding: ${variables.layoutPadding} 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(5px);
   ${TypoTitleXsR}
 
