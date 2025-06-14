@@ -15,7 +15,6 @@ React와 Vite를 기반으로 구축되었으며 사용자 경험(UX)을 고려�
 - **비동기 데이터 관리**: TanStack Query
 - **라우팅**: React Router v7
 - **애니메이션**: GSAP
-- **3D 그래픽**: Three.js (`@react-three/fiber`, `@react-three/drei`)
 - **SEO**: react-helmet-async
 
 <br />
