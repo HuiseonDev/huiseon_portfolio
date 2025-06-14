@@ -78,9 +78,8 @@ const Montserrat = css`
 
 const FooterStyle = styled.footer`
   background-color: ${variables.colors.gray500};
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  min-width: 100vw;
+  margin-left: calc(-50vw + 50%);
   width: 100%;
   border-radius: 2rem 2rem 0 0;
 
