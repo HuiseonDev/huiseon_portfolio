@@ -24,12 +24,12 @@ const GlobalStyles = css`
     --breakPointPC: 500px;
 
     --layoutPadding: 1.6rem;
-    --headerHeight: 5.6rem;
+    --headerHeight: 9rem;
     --maxWidth: 100%;
 
     @media (min-width: ${breakPoints.pc}) {
       --layoutPadding: 2.4rem;
-      --headerHeight: 8rem;
+      --headerHeight: 9rem;
       --maxWidth: 1280px;
 
       overflow-x: clip;
@@ -41,13 +41,17 @@ const GlobalStyles = css`
 
   body {
     margin: unset;
-
     color: ${variables.colors.black};
     font-family: "Pretendard", "Merriweather", "Montserrat", sans-serif;
     font-size: ${variables.size.medium};
-    padding: 0 ${variables.layoutPadding} calc(4rem + ${variables.headerHeight});
+    padding: 0 ${variables.layoutPadding};
 
     @media (min-width: ${breakPoints.pc}) {
+      padding-top: ${variables.headerHeight};
+      padding-bottom: 0;
+    }
+
+    @media (max-width: ${breakPoints.moMax}) {
       padding-top: ${variables.headerHeight};
       padding-bottom: 0;
     }
