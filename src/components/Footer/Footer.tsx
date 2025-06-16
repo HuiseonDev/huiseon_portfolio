@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="footer-inner">
         <section css={footerTitleWrapperStyle}>
           <div css={footerTitleStyle}>
-            <img src="/img/footer-icon.svg" alt="푸터 이미지" />
+            {/* <img src="/img/logo.svg" alt="푸터 이미지" /> */}
             <p css={Montserrat}>Lets Connect there</p>
           </div>
           <button css={postButtonStyle}>
@@ -103,9 +103,9 @@ const footerTitleStyle = css`
   font-size: 3.2rem;
   font-weight: 600;
 
-  img {
-    width: 5rem;
-  }
+  /* img {
+    width: 3rem;
+  } */
 `;
 
 const postButtonStyle = css`
