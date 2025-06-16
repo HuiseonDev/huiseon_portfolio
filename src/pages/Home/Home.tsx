@@ -2,21 +2,22 @@
 import Profile from "@/components/Profile/Profile";
 import VideoClip from "@/components/videoClip/VideoClip";
 import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const Home = () => {
   return (
-    <div css={test}>
+    <MainContentsStyle>
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp;안녕하세요! 👋</p>
       <VideoClip />
       <Profile />
-    </div>
+    </MainContentsStyle>
   );
 };
 
 export default Home;
 
-const test = css`
-  height: 1000px;
+const MainContentsStyle = styled.div`
+  height: 2000px;
   width: 100%;
   position: relative;
   display: flex;
