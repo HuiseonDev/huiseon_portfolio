@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import Button from "../Button/Button";
 import variables from "@/styles/Variables";
 import { TypoBodyMdB } from "@/styles/Common";
+import { breakPoints, mqMax } from "@/styles/BreakPoint";
 
 const Profile = () => {
   return (
@@ -53,6 +54,10 @@ const contentsWrapper = css`
   border-bottom: 1px solid ${variables.colors.gray500};
   padding-bottom: 6rem;
   margin: 2rem 0 3rem 0;
+
+  ${mqMax(breakPoints.pc)} {
+    flex-direction: column;
+  }
 `;
 
 const leftContentWrapper = css`
@@ -62,6 +67,10 @@ const leftContentWrapper = css`
 
   h2 {
     ${TypoBodyMdB}
+
+    ${mqMax(breakPoints.pc)} {
+      font-weight: 700;
+    }
   }
 `;
 
@@ -70,6 +79,10 @@ const rightContentWrapper = css`
   color: ${variables.colors.gray900};
   padding-top: 7rem;
   line-height: 2.3rem;
+
+  ${mqMax(breakPoints.pc)} {
+    padding-top: 4rem;
+  }
 `;
 
 const subTitleStyle = css`
