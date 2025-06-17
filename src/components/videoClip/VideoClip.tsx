@@ -5,13 +5,13 @@ import { css } from "@emotion/react";
 import variables from "@/styles/Variables";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { breakPoints, mqMax } from "@/styles/BreakPoint";
 
 const VideoClip = () => {
   const containerRef = useRef(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const [distance, setDistance] = useState(0);
-  console.log(containerRef);
 
   useEffect(() => {
     // 이미지와 텍스트 사이의 x축 거리 계산 (중심 기준)
@@ -20,8 +20,6 @@ const VideoClip = () => {
       const textRect = textRef.current.getBoundingClientRect();
       const dist = textRect.right - imgRect.left;
       setDistance(dist);
-      console.log("img", imgRect);
-      console.log("text", textRect);
     }
   }, []);
 
@@ -66,8 +64,8 @@ const VideoClip = () => {
         >
           <img src="img/profile.svg" ref={imgRef} />
           <div ref={textRef}>
-            <span>My Video</span>
             <span>FE Interview</span>
+            <span>video</span>
           </div>
         </div>
       </VideoContainerStyle>
@@ -143,13 +141,21 @@ const VideoCover = styled.div`
     height: 2rem;
     background-image: url("img/border.svg");
     background-size: contain;
+
+    ${mqMax(breakPoints.pc)} {
+      bottom: -2.4rem;
+    }
   }
 `;
 
 const VideoOverlayText = styled.div`
   position: absolute;
-  z-index: 3; /* 비디오, after보다 위 */
+  z-index: 3;
   left: 8%;
+
+  ${mqMax(breakPoints.pc)} {
+    left: -2rem;
+  }
 `;
 
 const titleStyle = css`
@@ -170,6 +176,13 @@ const titleStyle = css`
     border-radius: 0 0 2rem 0;
     position: relative;
 
+    ${mqMax(breakPoints.pc)} {
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 3rem;
+      padding: 0 3rem 2rem 3rem;
+    }
+
     ::after {
       content: "";
       position: absolute;
@@ -184,6 +197,10 @@ const titleStyle = css`
 
   span:last-of-type {
     border-radius: 0 0 2rem 2rem;
+
+    ${mqMax(breakPoints.pc)} {
+      border-radius: 0 0 2rem 0;
+    }
 
     ::before {
       content: "";

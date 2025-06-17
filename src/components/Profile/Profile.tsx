@@ -32,7 +32,7 @@ const Profile = () => {
         </span>
       </div>
       <Button
-        buttonText={"gitHub"}
+        buttonText={"github"}
         fixCirclePosition={{
           top: "0",
           right: "3.2rem",
