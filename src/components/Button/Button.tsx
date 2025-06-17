@@ -18,6 +18,27 @@ type ButtonTextType = {
   movCirclePosition: Position;
 };
 
+/** gsap animate button
+ * 
+   * @param buttonText : (필수) 버튼 내부에 들어갈 텍스트
+   * @param fixCirclePosition : (일부 필수) 고정되어있는 요소의 위치
+   * @param movCirclePosition : (일부 필수) hover시 animate가 적용될 요소의 위치
+   * 
+   * @example
+   *<Button buttonText={"예시 텍스트"}
+        fixCirclePosition={{
+          top: "0",
+          right: "3.2rem",
+          bottom: "1rem",
+          left: "2rem"
+        }}
+        movCirclePosition={{
+          top: "0",
+          right: "0",
+        }}
+      />
+   */
+
 const Button = ({
   buttonText,
   fixCirclePosition,
