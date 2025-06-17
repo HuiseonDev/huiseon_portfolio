@@ -1,10 +1,22 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import tsconfigPaths from "vite-tsconfig-paths";
+import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    viteCompression({
+      algorithm: "gzip",
+      ext: ".gz",
+      threshold: 10240,
+      compressionOptions: { level: 9 },
+      filter: /\.(js|mjs|json|css|html|svg)$/i,
+    }),
+  ],
   resolve: {
     alias: [
       { find: "@", replacement: path.resolve(__dirname, "src") },
