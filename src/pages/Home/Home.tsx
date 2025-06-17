@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import Profile from "@/components/Profile/Profile";
 import VideoClip from "@/components/videoClip/VideoClip";
+import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -32,4 +33,8 @@ const subTitleStyle = css`
   width: 30rem;
   height: 4rem;
   padding-left: 3rem;
+
+  ${mqMax(breakPoints.pc)} {
+    left: -2rem;
+  }
 `;
