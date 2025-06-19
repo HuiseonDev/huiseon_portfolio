@@ -13,7 +13,11 @@ type HeaderStyleProps = {
 const Header = ({ isScrolled }: { isScrolled: boolean }) => {
   const navList = ["Home", "AboutMe", "Skills", "ProjectList", "Blog"];
   const [selectedIndex, setSelectedIndex] = useState<number | null>(0);
+  const [selectedTheme, setSelectedTheme] = useState<boolean>(true);
 
+  const handleClick = () => {
+    setSelectedTheme((prev) => !prev);
+  };
   return (
     <HeaderStyle headerType={isScrolled}>
       <header className="header-inner">
@@ -33,6 +37,15 @@ const Header = ({ isScrolled }: { isScrolled: boolean }) => {
             </button>
           ))}
         </nav>
+
+        <button onClick={handleClick} css={themeStyle(isScrolled)}>
+          <img
+            src={selectedTheme ? "img/light-icon.svg" : "img/dark-icon.svg"}
+            alt={selectedTheme ? "Light Mode" : "Dark Mode"}
+            width={24}
+            height={24}
+          />
+        </button>
       </header>
     </HeaderStyle>
   );
@@ -101,6 +114,12 @@ const logoStyle = css`
   img {
     width: 2.4rem;
     height: 2.4rem;
+    margin: auto 0;
+
+    ${mqMax(breakPoints.pc)} {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
   }
 `;
 
@@ -136,6 +155,17 @@ const navItemStyle = (selected: boolean) => css`
 
   outline: none;
   box-shadow: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+`;
+
+const themeStyle = (headerType: boolean) => css`
+  outline: none;
+  box-shadow: none;
+  margin-right: ${headerType ? "2rem" : "0"};
 
   &:focus {
     outline: none;

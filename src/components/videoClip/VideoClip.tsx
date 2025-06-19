@@ -11,16 +11,33 @@ const VideoClip = () => {
   const containerRef = useRef(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
   const [distance, setDistance] = useState(0);
 
   useEffect(() => {
-    // 이미지와 텍스트 사이의 x축 거리 계산 (중심 기준)
+    // 이미지와 텍스트 사이의 x축 거리 계산
     if (imgRef.current && textRef.current) {
       const imgRect = imgRef.current.getBoundingClientRect();
       const textRect = textRef.current.getBoundingClientRect();
       const dist = textRect.right - imgRect.left;
       setDistance(dist);
     }
+
+    gsap.fromTo(
+      titleRef.current,
+      {
+        x: -300,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+      },
+      {
+        x: "1%",
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out",
+      }
+    );
   }, []);
 
   const handleMouseEnter = () => {
@@ -48,9 +65,9 @@ const VideoClip = () => {
     <>
       <VideoContainerStyle>
         <VideoOverlayText>
-          <h1 css={titleStyle}>
-            <span>FrontEnd Engineer</span>
-            <span>and UIUX Design</span>
+          <h1 css={titleStyle} ref={titleRef}>
+            <span>FrontEnd Develop</span>
+            <span>& UIUX Design</span>
             <span>Portfolio</span>
           </h1>
         </VideoOverlayText>
@@ -85,12 +102,18 @@ const VideoContainerStyle = styled.div`
   position: relative;
   border-radius: 3rem;
   margin-top: 3rem;
+  box-shadow: 10px 10px 10px rgba(153, 153, 153, 0.2);
 
   video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  ${mqMax(breakPoints.moMax)} {
+    border-radius: 2rem;
+    box-shadow: 3px 3px 3px rgba(153, 153, 153, 0.2);
   }
 `;
 
@@ -102,10 +125,12 @@ const buttonStyle = css`
   bottom: 3rem;
   right: 3rem;
   border-radius: 6rem;
+  border: 1px solid ${variables.colors.white};
   display: flex;
   padding: 0.4rem;
   align-items: center;
   gap: 1rem;
+  box-shadow: 0px 0px 5px rgba(153, 153, 153, 0.6);
 
   img {
     width: 5rem;
@@ -127,10 +152,16 @@ const VideoCover = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 160px;
+  width: 10rem;
+  height: 16rem;
   background-color: ${variables.colors.gray100};
   z-index: 2;
+
+  ${mqMax(breakPoints.moMax)} {
+    height: 14.6rem;
+    background-color: ${variables.colors.gray100};
+    width: 1px;
+  }
 
   ::after {
     content: "";
@@ -143,7 +174,9 @@ const VideoCover = styled.div`
     background-size: contain;
 
     ${mqMax(breakPoints.pc)} {
-      bottom: -2.4rem;
+      bottom: -1.4rem;
+      width: 1rem;
+      height: 1rem;
     }
   }
 `;
@@ -151,7 +184,7 @@ const VideoCover = styled.div`
 const VideoOverlayText = styled.div`
   position: absolute;
   z-index: 3;
-  left: 8%;
+  left: 7%;
 
   ${mqMax(breakPoints.pc)} {
     left: -2rem;
@@ -178,9 +211,9 @@ const titleStyle = css`
 
     ${mqMax(breakPoints.pc)} {
       font-size: 3rem;
-      font-weight: 600;
-      line-height: 3rem;
-      padding: 0 3rem 2rem 3rem;
+      font-weight: 500;
+      line-height: 2rem;
+      padding: 1rem 3rem 2rem 3rem;
     }
 
     ::after {
@@ -192,6 +225,12 @@ const titleStyle = css`
       height: 2rem;
       background-image: url("img/border.svg");
       background-size: contain;
+
+      ${mqMax(breakPoints.pc)} {
+        width: 1rem;
+        height: 1rem;
+        right: -1rem;
+      }
     }
   }
 
@@ -211,6 +250,13 @@ const titleStyle = css`
       height: 2rem;
       background-image: url("img/border.svg");
       background-size: contain;
+
+      ${mqMax(breakPoints.pc)} {
+        border-radius: 0 0 2rem 0;
+        width: 1rem;
+        height: 1rem;
+        right: -1rem;
+      }
     }
 
     ::after {
