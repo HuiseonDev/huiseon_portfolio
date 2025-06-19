@@ -5,8 +5,6 @@ import variables from "@/styles/Variables";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import LightIcon from "../../../public/img/light-icon.svg";
-import DarkIcon from "../../../public/img/dark-icon.svg";
 
 type HeaderStyleProps = {
   headerType: boolean;
@@ -42,7 +40,7 @@ const Header = ({ isScrolled }: { isScrolled: boolean }) => {
 
         <button onClick={handleClick} css={themeStyle(isScrolled)}>
           <img
-            src={selectedTheme ? LightIcon : DarkIcon}
+            src={selectedTheme ? "img/light-icon.svg" : "img/dark-icon.svg"}
             alt={selectedTheme ? "Light Mode" : "Dark Mode"}
             width={24}
             height={24}
