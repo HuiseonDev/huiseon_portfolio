@@ -6,12 +6,16 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { useState } from "react";
 
-const Header = () => {
+type HeaderStyleProps = {
+  headerType: boolean;
+};
+
+const Header = ({ isScrolled }: { isScrolled: boolean }) => {
   const navList = ["Home", "AboutMe", "Skills", "ProjectList", "Blog"];
   const [selectedIndex, setSelectedIndex] = useState<number | null>(0);
 
   return (
-    <HeaderStyle>
+    <HeaderStyle headerType={isScrolled}>
       <header className="header-inner">
         <div css={logoStyle}>
           <img src="/img/logo.svg" alt="포트폴리오 로고" />
@@ -44,17 +48,23 @@ const Montserrat = css`
   font-family: "Montserrat", sans-serif;
 `;
 
-const HeaderStyle = styled.div`
+export const HeaderStyle = styled.div<HeaderStyleProps>`
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99;
   padding: ${variables.layoutPadding} 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0);
+  border: 0.8px solid ${variables.colors.gray200};
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(5px);
   ${TypoTitleXsR}
+
+  transition:
+    margin-top 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    width 10s ease;
 
   .header-inner {
     max-width: 1280px;
@@ -64,6 +74,23 @@ const HeaderStyle = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+
+  ${({ headerType }) =>
+    headerType
+      ? css`
+          max-width: 80%;
+          background-color: black;
+          left: 50%;
+          margin-top: 1rem;
+          transform: translateX(-50%);
+          border-radius: 5rem;
+          background-color: rgba(255, 255, 255, 0.5);
+          box-shadow: 0px 4px 6px rgba(153, 153, 153, 0.04);
+        `
+      : css`
+          background-color: ${variables.colors.white};
+          color: ${variables.colors.black};
+        `}
 `;
 
 const logoStyle = css`
@@ -93,7 +120,7 @@ const navBarStyle = css`
 
 const navItemStyle = (selected: boolean) => css`
   background-color: ${selected
-    ? variables.colors.gray800
+    ? variables.colors.gray900
     : variables.colors.white};
   color: ${selected
     ? `${variables.colors.white}`
