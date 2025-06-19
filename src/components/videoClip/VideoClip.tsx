@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
-import mainVideo from "../../assets/videos/portfolio-Main-Video.mp4";
+import mainVideo from "../../assets/videos/main-video.mp4";
 import { css } from "@emotion/react";
 import variables from "@/styles/Variables";
 import { useEffect, useRef, useState } from "react";
