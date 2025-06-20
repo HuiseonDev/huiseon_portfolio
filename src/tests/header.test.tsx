@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 describe("Header Component", () => {
   beforeEach(() => {
-    render(<Header />);
+    render(<Header isScrolled={false} />);
   });
 
   it("화면에 정상 렌더링 된다.", () => {
