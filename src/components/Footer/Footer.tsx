@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="footer-inner">
         <section css={footerTitleWrapperStyle}>
           <div css={footerTitleStyle}>
-            <img src="/img/footer-icon.svg" alt="푸터 이미지" />
+            {/* <img src="/img/logo.svg" alt="푸터 이미지" /> */}
             <p css={Montserrat}>Lets Connect there</p>
           </div>
           <button css={postButtonStyle}>
@@ -38,7 +38,7 @@ const Footer = () => {
             <address>designh2sun@gmail.com</address>
           </div>
 
-          <div css={footerNavStyle}>
+          <nav css={footerNavStyle}>
             <ul>
               <li>
                 <a href="/">Home</a>
@@ -56,7 +56,7 @@ const Footer = () => {
                 <a href="/contact">Blog</a>
               </li>
             </ul>
-          </div>
+          </nav>
         </section>
 
         <div css={contentinfoStyle}>
@@ -76,11 +76,10 @@ const Montserrat = css`
   font-family: "Montserrat", sans-serif;
 `;
 
-const FooterStyle = styled.div`
+const FooterStyle = styled.footer`
   background-color: ${variables.colors.gray500};
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  min-width: 100vw;
+  margin-left: calc(-50vw + 50%);
   width: 100%;
   border-radius: 2rem 2rem 0 0;
 
@@ -104,9 +103,9 @@ const footerTitleStyle = css`
   font-size: 3.2rem;
   font-weight: 600;
 
-  img {
-    width: 5rem;
-  }
+  /* img {
+    width: 3rem;
+  } */
 `;
 
 const postButtonStyle = css`
