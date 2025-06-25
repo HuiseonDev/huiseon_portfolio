@@ -6,6 +6,11 @@ import { TypoBodyMdB } from "@/styles/Common";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 
 const Profile = () => {
+  const handleClick = () => {
+    setTimeout(() => {
+      window.open("https://github.com/huiseonDev", "_blank");
+    }, 400);
+  };
   return (
     <>
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp; Who am I ?</p>
@@ -33,6 +38,7 @@ const Profile = () => {
       </div>
       <Button
         buttonText={"github"}
+        handleClick={handleClick}
         fixCirclePosition={{
           top: "0",
           right: "3.2rem",
