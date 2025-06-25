@@ -16,6 +16,7 @@ type ButtonTextType = {
   buttonText: string;
   fixCirclePosition: Position;
   movCirclePosition: Position;
+  handleClick: () => void;
 };
 
 /** gsap animate button
@@ -43,6 +44,7 @@ const Button = ({
   buttonText,
   fixCirclePosition,
   movCirclePosition,
+  handleClick,
 }: ButtonTextType) => {
   const movingRef = useRef(null);
   const triggerRef = useRef(null);
@@ -55,10 +57,6 @@ const Button = ({
       duration: 0.8,
       ease: "elastic.out(1, 0.4)",
     });
-  };
-
-  const handleClick = () => {
-    window.open("https://github.com/huiseonDev", "_blank");
   };
 
   const handleMouseLeave = () => {
