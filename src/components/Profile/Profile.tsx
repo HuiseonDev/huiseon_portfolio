@@ -4,12 +4,19 @@ import Button from "../Button/Button";
 import variables from "@/styles/Variables";
 import { TypoBodyMdB } from "@/styles/Common";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
+import { useMediaQuery } from "react-responsive";
 
 const Profile = () => {
+  const isMo = useMediaQuery({ maxWidth: breakPoints.moMax });
+
   const handleClick = () => {
-    setTimeout(() => {
+    if (isMo) {
+      setTimeout(() => {
+        window.open("https://github.com/huiseonDev", "_blank");
+      }, 400);
+    } else {
       window.open("https://github.com/huiseonDev", "_blank");
-    }, 400);
+    }
   };
   return (
     <>
