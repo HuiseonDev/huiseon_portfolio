@@ -17,6 +17,10 @@ export default defineConfig({
       filter: /\.(js|mjs|json|css|html|svg)$/i,
     }),
   ],
+  server: {
+    host: true,
+    port: 5173,
+  },
   resolve: {
     alias: [
       { find: "@", replacement: path.resolve(__dirname, "src") },

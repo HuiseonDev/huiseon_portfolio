@@ -4,8 +4,20 @@ import Button from "../Button/Button";
 import variables from "@/styles/Variables";
 import { TypoBodyMdB } from "@/styles/Common";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
+import { useMediaQuery } from "react-responsive";
 
 const Profile = () => {
+  const isMo = useMediaQuery({ maxWidth: breakPoints.moMax });
+
+  const handleClick = () => {
+    if (isMo) {
+      setTimeout(() => {
+        window.open("https://github.com/huiseonDev", "_blank");
+      }, 400);
+    } else {
+      window.open("https://github.com/huiseonDev", "_blank");
+    }
+  };
   return (
     <>
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp; Who am I ?</p>
@@ -33,6 +45,7 @@ const Profile = () => {
       </div>
       <Button
         buttonText={"github"}
+        handleClick={handleClick}
         fixCirclePosition={{
           top: "0",
           right: "3.2rem",

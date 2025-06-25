@@ -3,53 +3,39 @@ import styled from "@emotion/styled";
 import mainVideo from "../../assets/videos/main-video.mp4";
 import { css } from "@emotion/react";
 import variables from "@/styles/Variables";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 
 const VideoClip = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLImageElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
-  const [distance, setDistance] = useState(0);
-
-  useEffect(() => {
-    // 이미지와 텍스트 사이의 x축 거리 계산
-    if (imgRef.current && textRef.current) {
-      const imgRect = imgRef.current.getBoundingClientRect();
-      const textRect = textRef.current.getBoundingClientRect();
-      const dist = textRect.right - imgRect.left;
-      setDistance(dist);
-    }
-
-    gsap.fromTo(
-      titleRef.current,
-      {
-        x: -300,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-      },
-      {
-        x: "1%",
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out",
-      }
-    );
-  }, []);
 
   const handleMouseEnter = () => {
+    if (!containerRef.current || !imgRef.current || !textRef.current) return;
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const imgRect = imgRef.current.getBoundingClientRect();
+    const textRect = textRef.current.getBoundingClientRect();
+
+    const containerCenterX = containerRect.left + containerRect.width / 2;
+    const imgCenterX = imgRect.left + imgRect.width / 2;
+    const textCenterX = textRect.left + textRect.width / 2;
+
+    const imgDistance = (containerCenterX - imgCenterX) * 2;
+    const textDistance = (containerCenterX - textCenterX) * 2;
+
     // 이미지 오른쪽으로 이동
     gsap.to(imgRef.current, {
-      x: distance / 1.2,
+      x: imgDistance,
       duration: 0.5,
       ease: "power2.out",
     });
     // 텍스트 왼쪽으로 이동
     gsap.to(textRef.current, {
-      x: -distance / 4,
+      x: textDistance,
       duration: 0.5,
       ease: "power2.out",
     });
@@ -72,14 +58,16 @@ const VideoClip = () => {
           </h1>
         </VideoOverlayText>
         <VideoCover />
-        <video src={mainVideo} autoPlay muted loop />
+        <video src={mainVideo} playsInline autoPlay muted loop />
         <div
           css={buttonStyle}
           ref={containerRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img src="img/profile.svg" ref={imgRef} />
+          <div className="imgWrapper" ref={imgRef}>
+            <object data="img/profile@1x.svg" type="image/svg+xml" />
+          </div>
           <div ref={textRef}>
             <span>FE Interview</span>
             <span>video</span>
@@ -100,7 +88,7 @@ const VideoContainerStyle = styled.div`
   height: 640px;
   overflow: hidden;
   position: relative;
-  border-radius: 3rem;
+  border-radius: 0 3rem 3rem 3rem;
   margin-top: 3rem;
   box-shadow: 10px 10px 10px rgba(153, 153, 153, 0.2);
 
@@ -119,22 +107,21 @@ const VideoContainerStyle = styled.div`
 
 const buttonStyle = css`
   position: absolute;
-  width: 18rem;
-  height: 6rem;
   background-color: ${variables.colors.gray100};
-  bottom: 3rem;
-  right: 3rem;
+  bottom: 2rem;
+  right: 2rem;
   border-radius: 6rem;
   border: 1px solid ${variables.colors.white};
   display: flex;
   padding: 0.4rem;
   align-items: center;
-  gap: 1rem;
   box-shadow: 0px 0px 5px rgba(153, 153, 153, 0.6);
 
-  img {
-    width: 5rem;
+  .imgWrapper {
+    width: 50px;
     order: 1;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 
   div {
@@ -144,6 +131,7 @@ const buttonStyle = css`
 
     span {
       ${Montserrat}
+      padding: 0 2rem;
     }
   }
 `;
@@ -152,14 +140,14 @@ const VideoCover = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 10rem;
+  width: 11rem;
   height: 16rem;
   background-color: ${variables.colors.gray100};
   z-index: 2;
 
   ${mqMax(breakPoints.moMax)} {
     height: 14.6rem;
-    background-color: ${variables.colors.gray100};
+    /* background-color: ${variables.colors.gray100}; */
     width: 1px;
   }
 
