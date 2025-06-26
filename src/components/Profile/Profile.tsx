@@ -19,7 +19,7 @@ const Profile = () => {
     }
   };
   return (
-    <>
+    <div css={profileWrapperStyle}>
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp; Who am I ?</p>
       <div css={contentsWrapper}>
         <section css={leftContentWrapper}>
@@ -55,18 +55,22 @@ const Profile = () => {
           right: "0",
         }}
       />
-    </>
+    </div>
   );
 };
 
 export default Profile;
+
+const profileWrapperStyle = css`
+  padding-bottom: 20rem;
+`;
 
 const contentsWrapper = css`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid ${variables.colors.gray500};
   padding-bottom: 6rem;
-  margin: 2rem 0 3rem 0;
+  margin: 2rem 0 2rem 0;
 
   ${mqMax(breakPoints.pc)} {
     flex-direction: column;
