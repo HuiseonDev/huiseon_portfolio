@@ -3,15 +3,15 @@ const variables = {
     black: "#1e1e1e",
     white: "#fff",
 
-    gray900: "#3c3c3e",
-    gray800: "#595b5c",
-    gray700: "#6d6e70",
-    gray600: "#959799",
+    gray900: "#3E3D3C",
+    gray800: "#5C5A59",
+    gray700: "#737272",
+    gray600: "#9E9E9D",
     gray500: "#C9C9C9",
-    gray400: "#d4d8db",
-    gray300: "#e6e7ec",
-    gray200: "#ebedf2",
-    gray100: "#F9F9F9",
+    gray400: "#D8D8D8",
+    gray300: "#E4E4E4",
+    gray200: "#f5f5f4",
+    gray100: "#f9f9f9",
   },
 
   size: {
