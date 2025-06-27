@@ -11,7 +11,7 @@ import variables from "@/styles/Variables";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollAnimater = () => {
+const SkillAnimater = () => {
   const isMo = useMediaQuery({ maxWidth: breakPoints.moMax });
   const topBoxRef = useRef<HTMLDivElement | null>(null);
   const bottomBoxRef = useRef<HTMLDivElement | null>(null);
@@ -59,7 +59,7 @@ const ScrollAnimater = () => {
   );
 };
 
-export default ScrollAnimater;
+export default SkillAnimater;
 
 const Montserrat = css`
   font-family: "Montserrat", sans-serif;
@@ -77,6 +77,7 @@ const AnimationWrapperStyle = css`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  padding: 5rem 0 10rem 0;
 `;
 
 const topBoxStyle = css`
