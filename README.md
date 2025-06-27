@@ -12,7 +12,6 @@ React와 Vite를 기반으로 구축되었으며 사용자 경험(UX)을 고려�
 - **언어**: TypeScript
 - **스타일링**: Emotion (`@emotion/react`, `@emotion/styled`)
 - **상태 관리**: Zustand
-- **비동기 데이터 관리**: TanStack Query
 - **라우팅**: React Router v7
 - **애니메이션**: GSAP
 - **SEO**: react-helmet-async
