@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
-import { breakPoints } from "@/styles/BreakPoint";
+import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { FESkills, shuffledSkills } from "./Skills";
-import { TypoTitleXsM } from "@/styles/Common";
+import { TypoCapXsR, TypoTitleXsM } from "@/styles/Common";
 import variables from "@/styles/Variables";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -64,6 +64,10 @@ export default SkillAnimater;
 const Montserrat = css`
   font-family: "Montserrat", sans-serif;
   font-size: ${TypoTitleXsM};
+
+  ${mqMax(breakPoints.pc)} {
+    ${TypoCapXsR}
+  }
 `;
 
 const AnimationWrapperStyle = css`

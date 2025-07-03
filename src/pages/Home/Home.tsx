@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Profile from "@/components/Profile/Profile";
 import SkillAnimater from "@/components/ScrollAnimater/SkillAnimater";
-import StackedCards from "@/components/ScrollAnimater/StackedCards";
 import VideoClip from "@/components/videoClip/VideoClip";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
@@ -13,7 +12,7 @@ const Home = () => {
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp;안녕하세요! 👋</p>
       <VideoClip />
       <Profile />
-      <StackedCards />
+      {/* <StackedCards /> */}
       <SkillAnimater />
     </MainContentsStyle>
   );
