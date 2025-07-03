@@ -63,6 +63,10 @@ export default Profile;
 
 const profileWrapperStyle = css`
   padding-bottom: 20rem;
+
+  ${mqMax(breakPoints.pc)} {
+    padding-bottom: 10rem;
+  }
 `;
 
 const contentsWrapper = css`
