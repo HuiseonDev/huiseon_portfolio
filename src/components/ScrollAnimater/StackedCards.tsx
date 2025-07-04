@@ -9,12 +9,10 @@ import { breakPoints, mqMax } from "@/styles/BreakPoint";
 gsap.registerPlugin(ScrollTrigger);
 
 const cardImg = [
-  "/img/mock1.svg",
-  "/img/mock2.svg",
-  "/img/mock1.svg",
-  "/img/mock2.svg",
-  "/img/mock1.svg",
-  "/img/mock2.svg",
+  "/img/toucheese-mock.svg",
+  "/img/pillmate-mock.svg",
+  "/img/trifly-mock.svg",
+  "/img/wish-mock.svg",
 ];
 
 const StackedCards = () => {
