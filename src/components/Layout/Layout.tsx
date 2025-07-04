@@ -3,12 +3,14 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import useScrollObserver from "@/hooks/useScrollObserver";
 import { useRef } from "react";
+import ScrollToTop from "../ScrollTop";
 
 const Layout = () => {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const isScrolled = useScrollObserver(sentinelRef);
   return (
     <div>
+      <ScrollToTop />
       <Header isScrolled={isScrolled} />
       <div ref={sentinelRef} style={{ height: "1px" }} />
       <Outlet />

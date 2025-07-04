@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { FESkills, shuffledSkills } from "./Skills";
-import { TypoCapXsR, TypoTitleXsM } from "@/styles/Common";
+import { TypoCapXsR, TypoTitleXsR } from "@/styles/Common";
 import variables from "@/styles/Variables";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,8 +38,12 @@ const SkillAnimater = () => {
       );
     };
 
-    animateBox(topBoxRef.current, -100);
-    animateBox(bottomBoxRef.current, 100);
+    animateBox(topBoxRef.current, -90);
+    animateBox(bottomBoxRef.current, 90);
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, [isMo]);
 
   return (
@@ -63,7 +67,7 @@ export default SkillAnimater;
 
 const Montserrat = css`
   font-family: "Montserrat", sans-serif;
-  font-size: ${TypoTitleXsM};
+  font-size: ${TypoTitleXsR};
 
   ${mqMax(breakPoints.pc)} {
     ${TypoCapXsR}
@@ -81,26 +85,26 @@ const AnimationWrapperStyle = css`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 5rem 0 10rem 0;
+  padding: 0 0 20rem 0;
 `;
 
 const topBoxStyle = css`
   width: fit-content;
-  border-top: 1px solid ${variables.colors.gray900};
-  border-bottom: 1px solid ${variables.colors.gray900};
+  border-top: 1px solid ${variables.colors.gray600};
+  border-bottom: 1px solid ${variables.colors.gray600};
   white-space: nowrap;
   ${Montserrat}
   padding: 0.4rem 2rem;
-  color: ${variables.colors.gray900};
+  color: ${variables.colors.gray600};
 `;
 
 const bottomBoxStyle = css`
   width: fit-content;
   transform-origin: right center;
-  border-top: 1px solid ${variables.colors.gray900};
-  border-bottom: 1px solid ${variables.colors.gray900};
+  border-top: 1px solid ${variables.colors.gray600};
+  border-bottom: 1px solid ${variables.colors.gray600};
   white-space: nowrap;
   ${Montserrat}
   padding: 0.4rem 2rem;
-  color: ${variables.colors.gray900};
+  color: ${variables.colors.gray600};
 `;

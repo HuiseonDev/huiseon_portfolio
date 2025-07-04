@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import Profile from "@/components/Profile/Profile";
-import SkillAnimater from "@/components/ScrollAnimater/SkillAnimater";
 import VideoClip from "@/components/videoClip/VideoClip";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import ProjectItem from "@/components/ProjectList/ProjectItem";
+import SkillAnimater from "@/components/ScrollAnimater/SkillAnimater";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Profile />
       {/* <StackedCards /> */}
       <SkillAnimater />
+      <ProjectItem />
     </MainContentsStyle>
   );
 };
