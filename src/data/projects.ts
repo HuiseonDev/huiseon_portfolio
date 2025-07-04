@@ -1,4 +1,16 @@
-export const projects = [
+export interface Project {
+  id: string;
+  title: string;
+  durationStart: string;
+  durationEnd: string;
+  team: string;
+  thumbnail: string;
+  description: string;
+  tags: string[];
+  navigate: string;
+}
+
+export const projects: Project[] = [
   {
     id: "Toucheese",
     title: "Toucheese",
