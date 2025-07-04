@@ -40,7 +40,7 @@ const Header = ({ isScrolled }: { isScrolled: boolean }) => {
 
         <button onClick={handleClick} css={themeStyle(isScrolled)}>
           <img
-            src={selectedTheme ? "img/light-icon.svg" : "img/dark-icon.svg"}
+            src={selectedTheme ? "/img/light-icon.svg" : "/img/dark-icon.svg"}
             alt={selectedTheme ? "Light Mode" : "Dark Mode"}
             width={24}
             height={24}
