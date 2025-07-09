@@ -17,15 +17,18 @@ const ProjectItem = () => {
     <>
       <div css={gridContainerStyle}>
         {projects.map((item, idx) => (
-          <div onClick={() => handleClick(item.navigate)}>
-            <div css={itemBoxStyle} key={idx}>
+          <div
+            data-testid={`project-card-${item.id}`}
+            onClick={() => handleClick(item.navigate)}
+          >
+            <div key={idx} css={itemBoxStyle}>
               <img css={imgStyle} src={`${item.thumbnail}`} alt={item.title} />
               <div css={hoverBoxStyle} className="hoverBox">
                 <Tags tags={item.tags} />
               </div>
             </div>
             <div css={subTitleWrapperStyle}>
-              <p>
+              <p data-testid={`project-duration-${item.id}`}>
                 {item.durationStart} - {item.durationEnd}
               </p>
               <p>•</p>
