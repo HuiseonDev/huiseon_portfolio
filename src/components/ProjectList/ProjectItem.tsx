@@ -18,10 +18,11 @@ const ProjectItem = () => {
       <div css={gridContainerStyle}>
         {projects.map((item, idx) => (
           <div
+            key={idx}
             data-testid={`project-card-${item.id}`}
             onClick={() => handleClick(item.navigate)}
           >
-            <div key={idx} css={itemBoxStyle}>
+            <div css={itemBoxStyle}>
               <img css={imgStyle} src={`${item.thumbnail}`} alt={item.title} />
               <div css={hoverBoxStyle} className="hoverBox">
                 <Tags tags={item.tags} />
@@ -58,6 +59,7 @@ const gridContainerStyle = css`
   gap: 3rem;
   padding: 1rem;
   overflow: hidden;
+
   cursor:
     url("/img/cursor.svg") 4 4,
     pointer;
@@ -65,12 +67,15 @@ const gridContainerStyle = css`
   ${mqMax(breakPoints.moMid)} {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  & > div {
+    margin: 1rem 0 10rem 0;
+  }
 `;
 
 const titleWrapperStyle = css`
   display: flex;
   gap: 1rem;
-  margin: 1rem 0 10rem 0;
   align-items: center;
 
   h2 {
@@ -104,6 +109,20 @@ const itemBoxStyle = css`
     opacity: 1;
     transform: translateY(0);
   }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  ${mqMax(breakPoints.moMax)} {
+    &:hover .hoverBox {
+      opacity: 0;
+    }
+
+    &:hover img {
+      transform: unset;
+    }
+  }
 `;
 
 const imgStyle = css`
@@ -113,10 +132,6 @@ const imgStyle = css`
   display: block;
   border-radius: 2rem;
   transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 const hoverBoxStyle = css`

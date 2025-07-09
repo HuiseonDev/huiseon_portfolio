@@ -86,6 +86,10 @@ const AnimationWrapperStyle = css`
   align-items: center;
   gap: 2rem;
   padding: 0 0 20rem 0;
+
+  ${mqMax(breakPoints.pc)} {
+    padding: 0 0 10rem 0;
+  }
 `;
 
 const topBoxStyle = css`

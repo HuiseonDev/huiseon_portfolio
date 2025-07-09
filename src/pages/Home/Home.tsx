@@ -5,16 +5,18 @@ import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import ProjectItem from "@/components/ProjectList/ProjectItem";
+import { useMediaQuery } from "react-responsive";
 import SkillAnimater from "@/components/ScrollAnimater/SkillAnimater";
 
 const Home = () => {
+  const isPc = useMediaQuery({ maxWidth: breakPoints.moMax });
   return (
     <MainContentsStyle>
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp;안녕하세요! 👋</p>
       <VideoClip />
       <Profile />
+      {!isPc && <SkillAnimater />}
       {/* <StackedCards /> */}
-      <SkillAnimater />
       <ProjectItem />
     </MainContentsStyle>
   );
