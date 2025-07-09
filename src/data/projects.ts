@@ -47,8 +47,8 @@ export const projects: Project[] = [
   {
     id: "Portfolio",
     title: "Portfolio",
-    durationStart: "2024.07",
-    durationEnd: "2024.08",
+    durationStart: "2025.06",
+    durationEnd: "진행중",
     team: "개인",
     thumbnail: "/img/portfolio-mock.svg",
     description: "프론트엔드 개발 및 디자인 웹 포트폴리오",
