@@ -1,29 +1,22 @@
 import ProjectItem from "@/components/ProjectList/ProjectItem";
 import { projects } from "@/data/projects";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { describe } from "vitest";
 
-/** 테스트 항목
- * 1. 프로젝트 아이템 렌더링 여부
- * 2. hover 시 태그 컴포넌트 렌더링 여부
- * 3. 프로젝트 아이템 선택시 navigate 경로로 이동 확인
- * 4. 각 프로젝트의 thumbnail 이미지가 올바른 src와 alt 속성으로 렌더링되는지 확인
- * 5. 태그 컴포넌트가 각 프로젝트의 tags 배열을 받아 전달하는지 확인
- * 6. 반응형 적용시 그리드 스타일이 잘 적용되는지 확인
- */
 const mockedNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
 
   return {
     ...actual,
-    navigate: () => mockedNavigate,
+    useNavigate: () => mockedNavigate,
   };
 });
 
 describe("project component", () => {
   beforeEach(() => {
+    mockedNavigate.mockClear();
     render(
       <BrowserRouter>
         <ProjectItem />
@@ -38,6 +31,9 @@ describe("project component", () => {
       expect(
         screen.getByText(new RegExp(project.team.replace(/\s+/g, "\\s+")))
       ).toBeInTheDocument();
+      expect(
+        screen.getByTestId(`project-duration-${project.id}`)
+      ).toHaveTextContent(`${project.durationStart} - ${project.durationEnd}`);
     });
   });
 
@@ -48,4 +44,25 @@ describe("project component", () => {
       expect(img.src).toContain(project.thumbnail);
     });
   });
+
+  it("프로젝트 아이템 클릭시 navigate가 호출된다", () => {
+    projects.forEach((project) => {
+      fireEvent.click(screen.getByTestId(`project-card-${project.id}`));
+      expect(mockedNavigate).toHaveBeenCalledWith(project.navigate);
+    });
+  });
+
+  it("프로젝트 hoverBox가 DOM에 존재하지만 opacity가 0이다", () => {
+    const hoverBox = document.querySelectorAll(".hoverBox");
+    hoverBox.forEach((box) => {
+      expect(box).toHaveStyle("opacity: 0");
+    });
+  });
+
+  test.each(projects.flatMap((p) => p.tags))(
+    "태그 '%s'가 렌더링되는지 확인한다",
+    (tag) => {
+      expect(screen.getAllByText(tag).length).toBeGreaterThan(0);
+    }
+  );
 });
