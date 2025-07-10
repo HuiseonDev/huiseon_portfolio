@@ -69,7 +69,7 @@ export const HeaderStyle = styled.div<HeaderStyleProps>`
   padding: ${variables.layoutPadding} 0;
   width: 100%;
   border: 0.8px solid ${variables.colors.gray200};
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   ${TypoTitleXsR}
 
@@ -98,7 +98,7 @@ export const HeaderStyle = styled.div<HeaderStyleProps>`
           transform: translateX(-50%);
           border-radius: 5rem;
           background-color: rgba(255, 255, 255, 0.5);
-          box-shadow: 0px 4px 6px rgba(153, 153, 153, 0.04);
+          box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
         `
       : css`
           background-color: ${variables.colors.white};
@@ -129,8 +129,9 @@ const navBarStyle = css`
   background-color: ${variables.colors.white};
   padding: 0.4rem 0.6rem;
   border-radius: 5rem;
+  border: 1px solid ${variables.colors.gray200};
   margin: 0 auto;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.06);
 
   ${mqMax(breakPoints.pc)} {
     display: none;
