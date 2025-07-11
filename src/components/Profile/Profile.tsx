@@ -38,12 +38,13 @@ const Profile = () => {
         handleClick={handleClick}
         fixCirclePosition={{
           top: "0",
-          right: "3.2rem",
+          right: "7rem",
         }}
         movCirclePosition={{
           top: "0",
-          right: "0",
+          right: "0rem",
         }}
+        fix={false}
       />
     </div>
   );
