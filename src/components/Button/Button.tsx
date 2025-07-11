@@ -3,7 +3,7 @@
 import { TypoCapSmR } from "@/styles/Common";
 import { css } from "@emotion/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Position = {
   top?: string;
@@ -17,6 +17,7 @@ type ButtonTextType = {
   fixCirclePosition: Position;
   movCirclePosition: Position;
   handleClick: () => void;
+  fix: boolean;
 };
 
 /** gsap animate button
@@ -45,9 +46,19 @@ const Button = ({
   fixCirclePosition,
   movCirclePosition,
   handleClick,
+  fix,
 }: ButtonTextType) => {
   const movingRef = useRef(null);
-  const triggerRef = useRef(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+
+  const [fixWidth, setFixWidth] = useState(0);
+
+  useEffect(() => {
+    if (triggerRef.current) {
+      const width = triggerRef.current.getBoundingClientRect().width;
+      setFixWidth(width);
+    }
+  }, [buttonText]);
 
   // hover시 우측 이동
   const handleMouseEnter = () => {
@@ -69,7 +80,7 @@ const Button = ({
   };
 
   return (
-    <div css={circleWrapper}>
+    <div css={circleWrapper(fix)}>
       <svg width="0" height="0">
         <filter id="goo">
           <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
@@ -97,7 +108,7 @@ const Button = ({
       </button>
       <button
         ref={movingRef}
-        css={movingCircle(movCirclePosition)}
+        css={movingCircle(movCirclePosition, fix, fixWidth)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
@@ -110,12 +121,18 @@ const Button = ({
 
 export default Button;
 
-const circleWrapper = css`
+const circleWrapper = (fix: boolean) => css`
   display: flex;
   position: relative;
   filter: url(#goo);
   align-items: center;
   justify-content: center;
+
+  ${fix &&
+  `position: fixed
+    left: 50%;
+    transform: translateX(-50%);
+  `}
 
   button:focus {
     outline: none;
@@ -135,6 +152,7 @@ const fixCircle = (position: Position) => css`
   height: 1.6rem;
   z-index: 1;
   ${TypoCapSmR}
+  transform: translateX(50%);
 
   ${position.top && `top: ${position.top};`}
   ${position.right && `right: ${position.right};`}
@@ -142,7 +160,11 @@ const fixCircle = (position: Position) => css`
   ${position.left && `left: ${position.left};`}
 `;
 
-const movingCircle = (position: Position) => css`
+const movingCircle = (
+  position: Position,
+  fix: boolean,
+  fixWidth: number
+) => css`
   background-color: black;
   border-radius: 5rem;
   padding: 1rem;
@@ -150,8 +172,13 @@ const movingCircle = (position: Position) => css`
   width: 1.6rem;
   position: absolute;
 
+  ${fix
+    ? `right: calc(${-fixWidth / 2}px - 3.4rem);`
+    : position.right
+      ? `right: ${position.right};`
+      : ""}
   ${position.top && `top: ${position.top};`}
-  ${position.right && `right: ${position.right};`}
-  ${position.bottom && `bottom: ${position.bottom};`}
-  ${position.left && `left: ${position.left};`}
+    /* ${position.right && `right: ${position.right} ;`} */
+    ${position.bottom && `bottom: ${position.bottom};`}
+    ${position.left && `left: ${position.left};`};
 `;
