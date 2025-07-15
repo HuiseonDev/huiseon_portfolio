@@ -2,7 +2,7 @@
 import { projects } from "@/data/projects";
 import { css } from "@emotion/react";
 import { useLocation } from "react-router-dom";
-import Tags from "../ProjectList/Tags";
+import Tags from "../Tag/Tags";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { useEffect, useRef, useState } from "react";
 import { TypoBodySmM } from "@/styles/Common";
