@@ -1,9 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
 import Button from "@/components/Button/Button";
+import ToucheeseIssues from "@/components/Issues/ToucheeseIssues";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
+import LineTag from "@/components/Tag/LineTag";
 import { projects } from "@/data/projects";
 import { breakPoints } from "@/styles/BreakPoint";
+import { DividerStyle } from "@/styles/Common";
 import { css } from "@emotion/react";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
@@ -37,8 +40,8 @@ const Toucheese = () => {
   };
 
   return (
-    <>
-      <div css={projectWrapperStyle}>
+    <div>
+      <div css={MaintWrapperStyle}>
         <ProjectMain />
       </div>
       <div css={buttonWrapper}>
@@ -55,16 +58,84 @@ const Toucheese = () => {
           fix={true}
         />
       </div>
-    </>
+      <div css={imgcoverStyle}>
+        <img
+          className="ptimg img-1"
+          src="/img/toucheese-mock-pt02.webp"
+          alt="img-1"
+        />
+
+        <div className="left-stack">
+          <img
+            className="ptimg img-2"
+            src="/img/toucheese-mock-pt01.webp"
+            alt="img-2"
+          />
+          <div className="tag-box">
+            <LineTag tags={projects[0].stacks} />
+          </div>
+        </div>
+
+        <img
+          className="ptimg img-3"
+          src="/img/toucheese-mock-pt03.webp"
+          alt="img-3"
+        />
+      </div>
+      <div css={[dividerOption, DividerStyle]} />
+      <ToucheeseIssues />
+    </div>
   );
 };
 
 export default Toucheese;
 
-const projectWrapperStyle = css`
+const MaintWrapperStyle = css`
   margin-bottom: 10rem;
 `;
 
 const buttonWrapper = css`
-  margin-bottom: 10rem;
+  margin-bottom: 20rem;
+`;
+
+const imgcoverStyle = css`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 20rem;
+
+  .ptimg {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-1 {
+    grid-column: 1 / 3;
+  }
+
+  .left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tag-box {
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 100%;
+  }
+
+  .img-3 {
+    grid-row: span 2;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const dividerOption = css`
+  min-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  width: 100%;
 `;

@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button/Button";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
+import LineTag from "@/components/Tag/LineTag";
 import { projects } from "@/data/projects";
 import { breakPoints } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
@@ -37,7 +38,7 @@ const Trifly = () => {
   };
 
   return (
-    <>
+    <div>
       <div css={projectWrapperStyle}>
         <ProjectMain />
       </div>
@@ -55,7 +56,31 @@ const Trifly = () => {
           fix={true}
         />
       </div>
-    </>
+      <div css={imgcoverStyle}>
+        <img
+          className="ptimg img-1"
+          src="/img/trifly-mock-pt03.webp"
+          alt="img-1"
+        />
+
+        <div className="left-stack">
+          <img
+            className="ptimg img-2"
+            src="/img/trifly-mock-pt01.webp"
+            alt="img-2"
+          />
+          <div className="tag-box">
+            <LineTag tags={projects[1].stacks} />
+          </div>
+        </div>
+
+        <img
+          className="ptimg img-3"
+          src="/img/trifly-mock-pt02.webp"
+          alt="img-3"
+        />
+      </div>
+    </div>
   );
 };
 
@@ -66,5 +91,40 @@ const projectWrapperStyle = css`
 `;
 
 const buttonWrapper = css`
-  margin-bottom: 10rem;
+  margin-bottom: 20rem;
+`;
+
+const imgcoverStyle = css`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  .ptimg {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-1 {
+    grid-column: 1 / 3;
+  }
+
+  .left-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tag-box {
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 100%;
+  }
+
+  .img-3 {
+    grid-row: span 2;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
