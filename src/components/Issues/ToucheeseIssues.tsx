@@ -14,76 +14,97 @@ const ToucheeseIssues = () => {
   return (
     <div css={wrapper}>
       <h2 className="hidden">Issues</h2>
-      <article css={IssuesWrapperStyle}>
-        <h3>React 렌더링 사이클을 고려한 비동기 상태 업데이트 최적화</h3>
-        <div className="ObjectiveTitle">
-          {/* <h4>Objective</h4> */}
-          <ul>
-            {IssuesToucheese.objective.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div css={IssuesContentStyle}>
-          <img src={IssuesToucheese.imgBefore} />
 
-          <div css={sectionWrapper}>
-            <section>
-              <h4>문제점</h4>
+      {IssuesToucheese.map((issue, i) => (
+        <article key={i} css={IssuesWrapperStyle}>
+          <h3>{issue.title}</h3>
+
+          {issue.objective && (
+            <div className="ObjectiveTitle">
               <ul>
-                {IssuesToucheese.problem.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </section>
-
-            <section>
-              <h4>분석</h4>
-              <ul>
-                {IssuesToucheese.analysis.map((item, index) => (
-                  <li key={index}>
-                    {item.issue}
-                    {item.subDetails && (
-                      <ul
-                        className="innerUl"
-                        css={css`
-                          margin-bottom: ${index === 0 ? "2rem" : "2rem"};
-                        `}
-                      >
-                        {item.subDetails.map((detail, subIndex) => (
-                          <li key={subIndex}>{detail}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
-        </div>
-
-        <div css={IssuesContentStyle}>
-          <img src={IssuesToucheese.imgAfter} />
-
-          <div css={sectionWrapper}>
-            <section>
-              <h4>개선</h4>
-              <ul>
-                <li>{IssuesToucheese.solution}</li>
-              </ul>
-            </section>
-
-            <section>
-              <h4>결과</h4>
-              <ul>
-                {IssuesToucheese.outcome.map((item, index) => (
+                {issue.objective.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
-            </section>
+            </div>
+          )}
+
+          {(Array.isArray(issue.problem) || Array.isArray(issue.analysis)) && (
+            <div css={IssuesContentStyle}>
+              {issue.imgBefore && (
+                <img
+                  src={issue.imgBefore}
+                  alt={`이슈 해결 이전 이미지 ${i + 1}`}
+                />
+              )}
+
+              <div css={sectionWrapper}>
+                {Array.isArray(issue.problem) && (
+                  <section>
+                    <h4>문제점</h4>
+                    <ul>
+                      {issue.problem.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {Array.isArray(issue.analysis) && (
+                  <section>
+                    <h4>분석</h4>
+                    <ul>
+                      {issue.analysis.map((item, index) => (
+                        <li key={index}>
+                          {item.issue}
+                          {Array.isArray(item.subDetails) && (
+                            <ul
+                              className="innerUl"
+                              css={css`
+                                margin-bottom: ${index === 0 ? "2rem" : "0"};
+                              `}
+                            >
+                              {item.subDetails.map((detail, subIndex) => (
+                                <li key={subIndex}>{detail}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div css={IssuesContentStyle}>
+            <img src={issue.imgAfter} alt={`이슈 이후 이미지 ${i + 1}`} />
+
+            <div css={sectionWrapper}>
+              <section>
+                <h4>개선</h4>
+                <ul>
+                  <li>{issue.solution}</li>
+                </ul>
+              </section>
+
+              <section>
+                <h4>결과</h4>
+                <ul>
+                  {Array.isArray(issue.outcome) ? (
+                    issue.outcome.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))
+                  ) : (
+                    <li>{issue.outcome}</li>
+                  )}
+                </ul>
+              </section>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+      ))}
     </div>
   );
 };
@@ -114,6 +135,7 @@ const IssuesWrapperStyle = css`
   ${Montserrat}
   display: flex;
   flex-direction: column;
+  margin-bottom: 20rem;
 
   h3 {
     ${TypoTitleSmS}
@@ -122,7 +144,6 @@ const IssuesWrapperStyle = css`
   }
 
   .ObjectiveTitle {
-    margin: 0 auto 4rem auto;
     text-align: center;
     color: ${variables.colors.gray900};
 
@@ -148,7 +169,8 @@ const IssuesContentStyle = css`
   padding: 3rem;
   display: flex;
   gap: 3rem;
-  margin-bottom: 3rem;
+  margin: 4rem auto 0 auto;
+  width: 100%;
 
   img {
     width: 50%;
@@ -160,7 +182,7 @@ const IssuesContentStyle = css`
 
 const sectionWrapper = css`
   display: flex;
-  justify-content: end;
+  justify-content: start;
   flex-direction: column;
   gap: 4rem;
 
