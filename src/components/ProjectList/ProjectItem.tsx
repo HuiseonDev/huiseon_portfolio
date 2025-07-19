@@ -5,7 +5,7 @@ import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { TypoBodySmM, TypoTitleSmS } from "@/styles/Common";
 import variables from "@/styles/Variables";
 import { useNavigate } from "react-router-dom";
-import Tags from "./Tags";
+import Tags from "../Tag/Tags";
 
 const ProjectItem = () => {
   const navigate = useNavigate();
