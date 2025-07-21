@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { IssuesToucheese } from "@/data/issues";
+import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import {
   TypoBodySmM,
   TypoBodySmR,
@@ -8,14 +8,19 @@ import {
   TypoTitleSmS,
 } from "@/styles/Common";
 import variables from "@/styles/Variables";
+import { IssueType } from "@/types/types";
 import { css } from "@emotion/react";
 
-const ToucheeseIssues = () => {
+interface ToucheeseIssuesProps {
+  data: IssueType[];
+}
+
+const IssueComponent = ({ data }: ToucheeseIssuesProps) => {
   return (
     <div css={wrapper}>
       <h2 className="hidden">Issues</h2>
 
-      {IssuesToucheese.map((issue, i) => (
+      {data.map((issue, i) => (
         <article key={i} css={IssuesWrapperStyle}>
           <h3>{issue.title}</h3>
 
@@ -79,13 +84,21 @@ const ToucheeseIssues = () => {
           )}
 
           <div css={IssuesContentStyle}>
-            <img src={issue.imgAfter} alt={`이슈 이후 이미지 ${i + 1}`} />
+            {issue.imgAfter && (
+              <img src={issue.imgAfter} alt={`이슈 이후 이미지 ${i + 1}`} />
+            )}
 
             <div css={sectionWrapper}>
               <section>
                 <h4>개선</h4>
                 <ul>
-                  <li>{issue.solution}</li>
+                  {Array.isArray(issue.solution) ? (
+                    issue.solution.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))
+                  ) : (
+                    <li>{issue.outcome}</li>
+                  )}
                 </ul>
               </section>
 
@@ -109,7 +122,7 @@ const ToucheeseIssues = () => {
   );
 };
 
-export default ToucheeseIssues;
+export default IssueComponent;
 
 const Montserrat = css`
   font-family: "Montserrat", sans-serif;
@@ -135,12 +148,13 @@ const IssuesWrapperStyle = css`
   ${Montserrat}
   display: flex;
   flex-direction: column;
-  margin-bottom: 20rem;
+  margin-bottom: 30rem;
 
   h3 {
     ${TypoTitleSmS}
     margin: 0 auto;
     position: relative;
+    text-align: center;
   }
 
   .ObjectiveTitle {
@@ -161,6 +175,10 @@ const IssuesWrapperStyle = css`
       list-style: none;
     }
   }
+
+  ${mqMax(breakPoints.pc)} {
+    margin-bottom: 20rem;
+  }
 `;
 
 const IssuesContentStyle = css`
@@ -177,6 +195,28 @@ const IssuesContentStyle = css`
     height: fit-content;
     border: 1px solid ${variables.colors.gray500};
     border-radius: 0.8rem;
+  }
+
+  ${mqMax(breakPoints.pc)} {
+    flex-direction: column;
+
+    img {
+      width: 80%;
+      height: fit-content;
+      border-radius: 0.4rem;
+      margin: 0 auto;
+    }
+  }
+
+  ${mqMax(breakPoints.moMid)} {
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      height: fit-content;
+      border-radius: 0.4rem;
+      margin: 0 auto;
+    }
   }
 `;
 
