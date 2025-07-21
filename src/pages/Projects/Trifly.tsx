@@ -1,10 +1,13 @@
 /** @jsxImportSource @emotion/react */
 
 import Button from "@/components/Button/Button";
+import IssueComponent from "@/components/Issues/IssueComponent";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
 import LineTag from "@/components/Tag/LineTag";
+import { IssuesTrifly } from "@/data/issues";
 import { projects } from "@/data/projects";
 import { breakPoints } from "@/styles/BreakPoint";
+import { DividerStyle } from "@/styles/Common";
 import { css } from "@emotion/react";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
@@ -80,6 +83,8 @@ const Trifly = () => {
           alt="img-3"
         />
       </div>
+      <div css={[dividerOption, DividerStyle]} />
+      <IssueComponent data={IssuesTrifly} />
     </div>
   );
 };
@@ -98,6 +103,7 @@ const imgcoverStyle = css`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 20rem;
 
   .ptimg {
     width: 100%;
@@ -127,4 +133,10 @@ const imgcoverStyle = css`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+const dividerOption = css`
+  min-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  width: 100%;
 `;
