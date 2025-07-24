@@ -129,7 +129,7 @@ const Montserrat = css`
 `;
 
 const wrapper = css`
-  margin: 15rem 0;
+  margin: 15rem 0 0 0;
 
   .hidden {
     position: absolute;
