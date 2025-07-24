@@ -1,10 +1,15 @@
 /** @jsxImportSource @emotion/react */
 
 import Button from "@/components/Button/Button";
+import IssueComponent from "@/components/Issues/IssueComponent";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
+import WishService from "@/components/ProjectItem/WishService";
 import LineTag from "@/components/Tag/LineTag";
+import { IssuesWish } from "@/data/issues";
 import { projects } from "@/data/projects";
 import { breakPoints } from "@/styles/BreakPoint";
+import { DividerStyle, TypoTitleSmS } from "@/styles/Common";
+import variables from "@/styles/Variables";
 import { css } from "@emotion/react";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
@@ -64,11 +69,7 @@ const Wish = () => {
         />
 
         <div className="left-stack">
-          <img
-            className="ptimg img-2"
-            src="/img/wish-mock-pt04.webp"
-            alt="img-2"
-          />
+          <img className="ptimg img-2" src="/img/wish-kdt.webp" alt="img-2" />
           <div className="tag-box">
             <LineTag tags={projects[2].stacks} />
           </div>
@@ -80,6 +81,11 @@ const Wish = () => {
           alt="img-3"
         />
       </div>
+
+      <h4 css={WishMiniTitle}>해커톤 프로젝트의 시스템 설계 및 개발 전략</h4>
+      <WishService />
+      <div css={[dividerOption, DividerStyle]} />
+      <IssueComponent data={IssuesWish} />
     </>
   );
 };
@@ -98,6 +104,7 @@ const imgcoverStyle = css`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 10rem;
 
   .ptimg {
     width: 100%;
@@ -127,4 +134,21 @@ const imgcoverStyle = css`
     height: 100%;
     object-fit: cover;
   }
+`;
+
+const dividerOption = css`
+  min-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  width: 100%;
+`;
+
+const WishMiniTitle = css`
+  ${TypoTitleSmS}
+  color:${variables.colors.gray600};
+  text-align: center;
+  margin: 30rem auto 10rem auto;
+  padding: 0 5rem;
+  width: fit-content;
+  border-left: 2px solid ${variables.colors.gray600};
+  border-right: 2px solid ${variables.colors.gray600};
 `;
