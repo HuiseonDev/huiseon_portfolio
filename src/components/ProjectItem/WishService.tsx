@@ -59,6 +59,6 @@ const ArticleStyle = styled.article`
   }
 
   .flowchartImg {
-    height: fit-content;
+    width: fit-content;
   }
 `;
