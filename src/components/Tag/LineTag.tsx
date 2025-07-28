@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { TypoCapSmR } from "@/styles/Common";
 import variables from "@/styles/Variables";
 import { css } from "@emotion/react";
@@ -6,7 +7,7 @@ import { css } from "@emotion/react";
 const LineTag = ({ tags }: { tags: string[] }) => (
   <div css={tagsWrapperStyle}>
     {tags.map((tag, i) => (
-      <span css={tagStyle} key={i}>
+      <span key={i} css={tagStyle}>
         {tag}
       </span>
     ))}
@@ -25,12 +26,22 @@ const tagsWrapperStyle = css`
   display: flex;
   flex-direction: column;
   align-items: end;
-  gap: 0.4rem;
+  gap: 0.8rem;
+
+  ${mqMax(breakPoints.pc)} {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 0.4rem;
+  }
 `;
 
 const tagStyle = css`
-  border: 1px solid ${variables.colors.gray700};
-  ${Montserrat}
+  display: inline-block;
   padding: 0.6rem 1rem;
-  border-radius: 5rem;
+  border: 1px solid ${variables.colors.gray700};
+  border-radius: 10rem;
+  text-align: end;
+  ${Montserrat}
 `;

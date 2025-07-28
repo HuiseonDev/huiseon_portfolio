@@ -266,10 +266,9 @@ export const IssuesWish: IssueType[] = [
 export const WishServiceContent: WishItem[] = [
   {
     title: "❶ 사용자 관심사 기반 AI 추천 부부 동반 주간 미션",
-    content: [
-      "부부 연동 기능을 통해 배우자와 주간 미션을 함께 수행하게 함으로써,",
-      " 난임 과정에서 자주 발생하는 심리적 거리감과 의사소통 단절 문제를 완화합니다.",
-    ],
+    content:
+      "부부 연동 기능을 통해 배우자와 주간 미션을 함께 수행하게 함으로써, 난임 과정에서 자주 발생하는 심리적 거리감과 의사소통 단절 문제를 완화합니다.",
+
     img: "/img/wish-img01.webp",
   },
   {
