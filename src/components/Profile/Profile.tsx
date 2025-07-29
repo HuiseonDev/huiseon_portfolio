@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import Button from "../Button/Button";
 import variables from "@/styles/Variables";
 import { TypoBodyMdB } from "@/styles/Common";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { useMediaQuery } from "react-responsive";
 import { profile } from "@/data/profile";
+import MotionButton from "../Button/MotionButton";
 
 const Profile = () => {
   const isMo = useMediaQuery({ maxWidth: breakPoints.moMax });
@@ -33,7 +33,7 @@ const Profile = () => {
         </section>
         <span css={rightContentWrapper}>{profile.description}</span>
       </div>
-      <Button
+      <MotionButton
         buttonText={"github"}
         handleClick={handleClick}
         fixCirclePosition={{

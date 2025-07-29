@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 
-import Button from "@/components/Button/Button";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
 import LineTag from "@/components/Tag/LineTag";
 import { projects } from "@/data/projects";
@@ -11,6 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import { IssuesToucheese } from "@/data/issues";
 import IssueComponent from "@/components/Issues/IssueComponent";
+import MotionButton from "@/components/Button/MotionButton";
 
 const Toucheese = () => {
   const isMoMid = useMediaQuery({
@@ -46,7 +46,7 @@ const Toucheese = () => {
         <ProjectMain />
       </div>
       <div css={buttonWrapper}>
-        <Button
+        <MotionButton
           buttonText={"Visit Website"}
           handleClick={handleClick}
           fixCirclePosition={{

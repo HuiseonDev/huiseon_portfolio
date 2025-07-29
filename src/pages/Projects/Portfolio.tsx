@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import Button from "@/components/Button/Button";
+import MotionButton from "@/components/Button/MotionButton";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
 import { projects } from "@/data/projects";
 import { breakPoints } from "@/styles/BreakPoint";
@@ -40,7 +40,7 @@ const Portfolio = () => {
         <ProjectMain />
       </div>
       <div css={buttonWrapper}>
-        <Button
+        <MotionButton
           buttonText={"Visit Website"}
           handleClick={handleClick}
           fixCirclePosition={{

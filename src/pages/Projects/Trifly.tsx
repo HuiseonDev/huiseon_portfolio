@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import Button from "@/components/Button/Button";
+import MotionButton from "@/components/Button/MotionButton";
 import IssueComponent from "@/components/Issues/IssueComponent";
 import ProjectMain from "@/components/ProjectItem/ProjectMain";
 import LineTag from "@/components/Tag/LineTag";
@@ -46,7 +46,7 @@ const Trifly = () => {
         <ProjectMain />
       </div>
       <div css={buttonWrapper}>
-        <Button
+        <MotionButton
           buttonText={"Visit Website"}
           handleClick={handleClick}
           fixCirclePosition={{
