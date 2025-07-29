@@ -27,7 +27,7 @@ type ButtonTextType = {
    * @param movCirclePosition : (일부 필수) hover시 animate가 적용될 요소의 위치
    * 
    * @example
-   *<Button buttonText={"예시 텍스트"}
+   *<MotionButton buttonText={"예시 텍스트"}
         fixCirclePosition={{
           top: "0",
           right: "3.2rem",
@@ -41,7 +41,7 @@ type ButtonTextType = {
       />
    */
 
-const Button = ({
+const MotionButton = ({
   buttonText,
   fixCirclePosition,
   movCirclePosition,
@@ -57,7 +57,7 @@ const Button = ({
     if (triggerRef.current) {
       const width = triggerRef.current.getBoundingClientRect().width;
       setFixWidth(width);
-    }
+    } else if (!triggerRef.current || !movingRef.current) return;
   }, [buttonText]);
 
   // hover시 우측 이동
@@ -119,7 +119,7 @@ const Button = ({
   );
 };
 
-export default Button;
+export default MotionButton;
 
 const circleWrapper = (fix: boolean) => css`
   display: flex;

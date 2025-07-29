@@ -16,7 +16,7 @@ const ProjectMain = () => {
   const [objectPosY, setObjectPosY] = useState(50);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !imgRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,53 +35,51 @@ const ProjectMain = () => {
   }, []);
 
   return (
-    <>
-      <div css={contentWrapperStyle}>
-        {projects.map(
-          (project, idx) =>
-            pathname.includes(`${project.title.toLowerCase()}`) && (
-              <>
-                <div key={idx} css={imgContentStyle} ref={containerRef}>
-                  <h1>{project.title.toUpperCase()}</h1>
-                  <div className="mainImgCover">
-                    <Tags tags={project.tags} />
-                    <img
-                      ref={imgRef}
-                      css={imgStyle(objectPosY)}
-                      src={`${project.subImg}`}
-                      alt={`${project.title}`}
-                    />
-                  </div>
+    <div css={contentWrapperStyle}>
+      {projects.map(
+        (project, idx) =>
+          pathname.includes(`${project.title.toLowerCase()}`) && (
+            <div className="imgDescWr" key={idx}>
+              <div css={imgContentStyle} ref={containerRef}>
+                <h1>{project.title.toUpperCase()}</h1>
+                <div className="mainImgCover">
+                  <Tags tags={project.tags} />
+                  <img
+                    ref={imgRef}
+                    css={imgStyle(objectPosY)}
+                    src={`${project.subImg}`}
+                    alt={`${project.title}`}
+                  />
                 </div>
-                <section css={descWrapperStyle}>
-                  <dl className="infoData">
-                    <div className="pair pair-1">
-                      <dt>INVOLVEMENT</dt>
-                      <dd>
-                        {Array.isArray(project.involvement)
-                          ? project.involvement.join("\n")
-                          : project.involvement}
-                      </dd>
-                    </div>
-                    <div className="pair pair-2">
-                      <dt>DELIVERABLES</dt>
-                      <dd>{project.deliverables}</dd>
-                    </div>
-                    <div className="pair pair-3">
-                      <dt>TEAM</dt>
-                      <dd>{project.team}</dd>
-                    </div>
-                  </dl>
-                  <dl className="resultData">
-                    <dt>RESULT</dt>
-                    <dd>{project.result}</dd>
-                  </dl>
-                </section>
-              </>
-            )
-        )}
-      </div>
-    </>
+              </div>
+              <section css={descWrapperStyle}>
+                <dl className="infoData">
+                  <div className="pair pair-1">
+                    <dt>INVOLVEMENT</dt>
+                    <dd>
+                      {Array.isArray(project.involvement)
+                        ? project.involvement.join("\n")
+                        : project.involvement}
+                    </dd>
+                  </div>
+                  <div className="pair pair-2">
+                    <dt>DELIVERABLES</dt>
+                    <dd>{project.deliverables}</dd>
+                  </div>
+                  <div className="pair pair-3">
+                    <dt>TEAM</dt>
+                    <dd>{project.team}</dd>
+                  </div>
+                </dl>
+                <dl className="resultData">
+                  <dt>RESULT</dt>
+                  <dd>{project.result}</dd>
+                </dl>
+              </section>
+            </div>
+          )
+      )}
+    </div>
   );
 };
 
@@ -93,12 +91,15 @@ const Montserrat = css`
 
 const contentWrapperStyle = css`
   height: fit-content;
-  display: flex;
-  flex-direction: column;
-  gap: 10rem;
 
-  ${mqMax(breakPoints.pc)} {
-    gap: 6rem;
+  .imgDescWr {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+
+    ${mqMax(breakPoints.pc)} {
+      gap: 6rem;
+    }
   }
 `;
 
