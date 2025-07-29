@@ -13,7 +13,7 @@ interface ILoading {
 
 const Loading = ({ size = "small", phrase }: ILoading) => {
   return (
-    <div css={lottieBox(size)}>
+    <div data-testid="loading-box" css={lottieBox(size)}>
       <Lottie
         animationData={animationData}
         loop={true}
