@@ -4,13 +4,20 @@ import VideoClip from "@/components/videoClip/VideoClip";
 import { breakPoints, mqMax } from "@/styles/BreakPoint";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import ProjectItem from "@/components/ProjectList/ProjectItem";
+import { useMediaQuery } from "react-responsive";
+import SkillAnimater from "@/components/ScrollAnimater/SkillAnimater";
 
 const Home = () => {
+  const isPc = useMediaQuery({ maxWidth: breakPoints.moMax });
   return (
     <MainContentsStyle>
       <p css={subTitleStyle}>●&nbsp;&nbsp;&nbsp;안녕하세요! 👋</p>
       <VideoClip />
       <Profile />
+      {!isPc && <SkillAnimater />}
+      {/* <StackedCards /> */}
+      <ProjectItem />
     </MainContentsStyle>
   );
 };
@@ -18,7 +25,7 @@ const Home = () => {
 export default Home;
 
 const MainContentsStyle = styled.div`
-  height: 2000px;
+  height: fit-content;
   width: 100%;
   position: relative;
   display: flex;

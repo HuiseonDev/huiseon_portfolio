@@ -8,6 +8,7 @@ const ProjectList = lazy(() => import("@pages/Projects/ProjectList"));
 const Trifly = lazy(() => import("@pages/Projects/Trifly"));
 const Toucheese = lazy(() => import("@pages/Projects/Toucheese"));
 const Wish = lazy(() => import("@pages/Projects/Wish"));
+const Portfolio = lazy(() => import("@pages/Projects/Portfolio"));
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
           {
             path: "wish",
             element: <Wish />,
+          },
+          {
+            path: "portfolio",
+            element: <Portfolio />,
           },
         ],
       },

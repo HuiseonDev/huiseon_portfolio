@@ -167,7 +167,7 @@ const GlobalStyles = css`
   ol,
   ul,
   li {
-    list-style: none;
+    /* list-style: none; */
   }
 
   blockquote,

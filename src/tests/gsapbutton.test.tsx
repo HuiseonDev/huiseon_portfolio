@@ -1,4 +1,4 @@
-import Button from "@/components/Button/Button";
+import MotionButton from "@/components/Button/MotionButton";
 import { fireEvent, render, screen } from "@testing-library/react";
 import gsap from "gsap";
 import { describe, expect } from "vitest";
@@ -15,7 +15,7 @@ const renderComponent = (isMo: boolean) => {
   };
 
   render(
-    <Button
+    <MotionButton
       buttonText="테스트 버튼"
       fixCirclePosition={{
         top: "0",
@@ -26,6 +26,7 @@ const renderComponent = (isMo: boolean) => {
         right: "0",
       }}
       handleClick={handleClick}
+      fix={true}
     />
   );
 };
